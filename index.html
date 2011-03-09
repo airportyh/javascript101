@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+<title>Javascript 101</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="console"></div>
+<script src="jquery.js"></script>
+<script src="jquery.console.js"></script>
+<script id="slides" type="text/slides">
+Javascript: 101
+
+"The world's most misunderstood programming language" 
+                                   - "Douglas Crockford"
+
+"Javascript" != "Java"
+
+"bad implementations"
+
+"The DOM"
+
+"Amateurs"
+
+"Javascript" > "Java"
+
+"Dynamic"
+
+"Higher-Order Functions"
+
+"numbers"
+
+1 + 2 - 3 * 4 / 5
+
+"64-bit floating point numbers (aka Double)"
+
+0.1 + 0.2
+
+Number('32')
+
+Number('abc')
+
+'4' - '3'
+
+Number('4') - Number('3')
+
+'4' + '3'
+
+typeof NaN
+
+var n = NaN
+
+n == n
+
+1 / 0
+
+-1 / 0
+
+typeof Infinity
+
+"strings"
+
+"I am a string"
+
+'I am a string'
+
+String('I am a string')
+
+'I am a \
+multiple-line \
+string'
+
+'I am a string'.length
+
+'I am a ' + 'string'
+
+'I am a string'.indexOf('string')
+
+'I am a string'.charAt(2)
+
+'I am a string'.match(/I am a (.*)/)[1]
+
+'I am a string'.split(' ')
+
+'I am a string'.toLowerCase()
+
+'I am a string'.toUpperCase()
+
+"var Statement"
+
+var n
+
+var n = 3
+
+n = "abc"
+
+var a, b, c = 2, d = 3
+
+var name,
+superSpecialAwesomeVariable,
+a3,
+_3,
+$3,
+$$$
+
+var 3tuple, first-name,
+function, class
+
+"Reserved Words"
+
+"abstract \
+boolean break byte \
+case catch char class const continue \
+debugger default delete do double \
+else enum export extends \
+false final finally float for function \
+goto \
+if implements import in instanceof int interface \
+long \
+native new null \
+package private protected public \
+return \
+short static super switch synchronized \
+this throw throws transient true try typeof \
+var volatile void \
+while with".split(' ').length
+
+"null and undefined"
+
+var a = null
+
+var b
+
+a.name
+
+b.name
+
+"booleans"
+
+true
+
+false
+
+if (true){
+    alert('Yahoo!')
+}
+
+while (false){
+    alert("This won't be seen")
+}
+
+for (; false;);
+
+if (1){}
+
+Boolean(false)
+
+Boolean(0)
+
+Boolean(null)
+
+Boolean(undefined)
+
+Boolean(NaN)
+
+Boolean('')
+
+Boolean('false')
+
+Boolean('0')
+
+Boolean(-1)
+
+"Object"
+
+var obj = {}
+
+var obj = Object()
+
+var obj = new Object()
+
+var js = {lang: 'Javascript', author: 'Brendan Eich'}
+
+js.lang
+
+js.author
+
+js['lang']
+
+js['author']
+
+js.lang = 'ECMAScript'
+
+js['lang'] = 'ECMAScript'
+
+js.born = 1995
+
+for (var attr in js){
+    console.log(attr + ': ' + js[attr])
+}
+
+delete js.author
+
+js.author
+
+"Function"
+
+function f(x){
+    return x * 2
+}
+
+f(2)
+
+function f(){
+}
+
+f()
+
+function f(){
+    var a = 2
+}
+f()
+
+console.log(a)
+
+var w = 0
+function f(x){
+    var y = 1
+    function g(){
+        var z = 2
+        // Scope of g: contains z
+    }
+    // Scope of f: contains x, y, g
+}
+// Global scope: contains w, f
+
+"Gotcha: Implicit Global Variables"
+
+var y = 0
+function f(x){
+    y = 2
+    return y + x
+}
+
+y
+
+"Higher Order Functions"
+
+function f(g){
+    g()
+}
+
+function f(){
+    function g(){
+        // blah
+    }
+    return g
+}
+
+var h = f
+
+h()
+
+"Closure ((double rainbow))"
+
+function printLater(msg){
+    function print(){
+        console.log(msg)
+    }
+    setTimeout(print, 2000)
+}
+
+printLater('What does it mean?')
+
+function newCounter(){
+    var n = 0
+    function counter(){
+        return n++
+    }
+    return counter
+}
+
+var count = newCounter()
+
+count()
+
+count()
+
+count()
+
+var count2 = newCounter()
+
+count2()
+
+count2()
+
+count()
+
+"Callbacks and Event Handlers"
+
+"Functions as Methods"
+
+var kitty = {
+    name: 'Kitty',
+    talk: function talk(){
+        console.log(this.name + ' sez MEOW!')
+    }
+}
+
+kitty.talk() // binding occurs
+
+"Gotcha: Inner Functions of Methods"
+
+kitty.talk = function talk(){
+    setTimeout(function(){
+        console.log(this.name + ' sez MEOW!')
+    }, 2000)
+}
+
+kitty.talk = function talk(){
+    var _this = this
+    setTimeout(function(){
+        console.log(_this.name + ' sez MEOW!')
+    }, 2000)
+}
+
+"References"
+
+open('http://developer.yahoo.com/yui/theater/')
+
+</script>
+<script src="setup.js"></script>
+</body>
+</html>
